@@ -21,12 +21,18 @@ export default class Compose extends Component {
   }
 
   createPost() {
+    const {text} = this.state
+    const {createPostFn} = this.props
+
+    createPostFn(text)
+    this.setState({text: ''})
 
   }
 
   render() {
     // Destructuring
     const { text } = this.state;
+
 
     return (
       <section className="Compose__parent">
@@ -35,8 +41,6 @@ export default class Compose extends Component {
           <div className="Compose__profile-picture">
             <ProfileIcon />
           </div>
-
-          {/* This is where you type the message for your new post */}
           <input className="Compose__input"
                  placeholder="What's on your mind?"
                  value={ text }
